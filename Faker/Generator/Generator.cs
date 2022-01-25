@@ -2,9 +2,7 @@
 
 namespace Faker.Generator
 {
-    public class Generator
-    {
-        public abstract class Generator : IGenerator
+    public abstract class Generator : IGenerator
         {
             protected int ConstSize = 10;
         
@@ -16,6 +14,5 @@ namespace Faker.Generator
 
             public abstract object Generate(GeneratorContext context);
             public new abstract string GetType();
-        } 
-    }
+        }
 }

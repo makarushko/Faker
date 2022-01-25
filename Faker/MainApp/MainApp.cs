@@ -1,5 +1,4 @@
 ﻿using System;
-using System.Xml;
 using Faker.DTO;
 using Newtonsoft.Json;
 
@@ -7,7 +6,7 @@ namespace Faker.MainApp
 {
     internal static class MainApp
     {
-        private static void Main(string[] args)
+        private static void Main()
         {
 
             Faker faker = new Faker();
