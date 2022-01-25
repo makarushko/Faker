@@ -6,7 +6,6 @@
     </PropertyGroup>
 
     <ItemGroup>
-      <Folder Include="Generator\Collections" />
       <Folder Include="Generator\ScalarValues" />
     </ItemGroup>
 
