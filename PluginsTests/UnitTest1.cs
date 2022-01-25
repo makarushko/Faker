@@ -15,10 +15,14 @@ namespace Test
         [Test]
         public void PluginLoadTest()
         {
-            String pluginName = "C:\\Users\\Anna\\RiderProjects\\Faker\\Faker\\Plugins\\CharGenerator.dll";
-            Assert.AreEqual("C:\\Users\\Anna\\RiderProjects\\Faker\\Faker\\Plugins\\CharGenerator.dll", pluginName); 
-            Assembly assembly = Assembly.LoadFile(pluginName);
-            Assert.AreEqual("CharGenerator.dll", assembly.ManifestModule.Name);
+            String pluginName1 = "C:\\Users\\Anna\\RiderProjects\\Faker\\Faker\\Plugins\\CharGenerator.dll";
+            Assert.AreEqual("C:\\Users\\Anna\\RiderProjects\\Faker\\Faker\\Plugins\\CharGenerator.dll", pluginName1); 
+            String pluginName2 = "C:\\Users\\Anna\\RiderProjects\\Faker\\Faker\\Plugins\\IntGenerator.dll";
+            Assert.AreEqual("C:\\Users\\Anna\\RiderProjects\\Faker\\Faker\\Plugins\\IntGenerator.dll", pluginName2);
+            Assembly assembly1 = Assembly.LoadFile(pluginName1);
+            Assert.AreEqual("CharGenerator.dll", assembly1.ManifestModule.Name);
+            Assembly assembly2 = Assembly.LoadFile(pluginName2);
+            Assert.AreEqual("IntGenerator.dll", assembly2.ManifestModule.Name);
         }
         
         private Boo bar;
