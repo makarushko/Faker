@@ -1,12 +1,21 @@
 ﻿using System;
+using System.Collections.Generic;
+using Faker.Generator;
 
 namespace Faker
 {
     class Faker
     {
-        static void Main(string[] args)
+        private Dictionary<string,IGenerator> _generators;
+        private List<Type> _cycleDependClassHolder ;
+        
+        public Faker()
         {
-            Console.WriteLine("Hello World!");
+            _generators = new Dictionary<string, IGenerator>();
+            _cycleDependClassHolder = new List<Type>();
+            
+            AutoLoadGenerators();
+            LoadGenerators();
         }
     }
 }
