@@ -12,6 +12,7 @@ namespace Faker
 {
     public class Faker
     {
+        private int circularLevel = 3;
         private Dictionary<string,IGenerator> _generators;
         private List<Type> _cycleDependClassHolder ;
         
@@ -75,21 +76,31 @@ namespace Faker
         {
             object obj = null;
             
-            if (_cycleDependClassHolder.Contains(type)) throw new Exception("Cycle Dependency exception was found");
-            _cycleDependClassHolder.Add(type);
+            if (_cycleDependClassHolder.Contains(type)) 
+            {
+                _cycleDependClassHolder.Clear();
+                circularLevel--;
+            }
 
+            if (circularLevel == 0)
+            {
+                throw new Exception("Cycle Dependency exception was found");
+            }
+            
             try
             {
                 obj = InitConstructor(GetSortedConstructorInfos(type, new ConstrCompareAsc()));
-                InitFields(obj, type.GetFields());
-                InitProperties(obj, type.GetProperties());
+                if (obj != null)
+                {
+                    InitFields(obj, type.GetFields());
+                    InitProperties(obj, type.GetProperties());
+                }
             }
             catch (Exception)
             {
                 
             }
 
-            _cycleDependClassHolder.Remove(type);
             return obj; 
         }
         
